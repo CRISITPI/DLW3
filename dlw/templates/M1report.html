@@ -1,0 +1,92 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<!-- <h1 align="center" style="background-color: darkslategrey;color:white;padding: 12px;">M1 - MASTER PROCESS SHEET</h1> -->
+<form action='.' method="POST">
+ <div class="container" style="width: 100%">
+<br>
+<h5 style="float: left"><b>Date: </b>{{dt}}</h5>
+<center><h4><u><B>DIESEL LOCOMOTIVE WORKS, VARANASI</B></u></h4></center>
+<center><h4><u><b>PROCESS-SHEET</b></u></h4></center>
+<br>
+{% for i in obj1 %}
+<table>
+<tr>
+<td><h5><b>PART NO: </b>{{prtno}} {{i.des}}</h5></td><td></td>
+<td><h5><b>DRG-NO.:</b> {{i.drgno}}</h5></td>
+</tr><tr></tr>
+<tr>
+<td><h5><b>RM PART NO:</b></h5></td>
+<td><h5><b>EPC: </b>{{obj3.epc}}</b></h5></td><td></td>
+<td><h5><b>PTC: </b>{{obj.ptc}}</h5></td>
+</tr>
+</table>
+<table class="table table-stripped">
+<tr></tr>
+{% endfor %}
+</table>
+</div>
+<table>
+<div class="table-responsive">
+<table class="table table-stripped">
+<tr><th rowspan="2">SHOP/SEC</th>
+<th rowspan="2">OPR. NO.</th><th rowspan="2">L.C.</th><th rowspan="2">OPERATION DESCRIPTION</th></tr>
+        <tr><th  >PA</th><th>AT</th><th>AT(p/pc)</th><th>LOT</th><th>NCP JBS </th><th>M5 CD</th><th>UPDT-DT</th></tr>
+        {% for i in dtl %}
+        <tr>
+            <td>
+                {{i.shop_sec}}
+            </td>
+            <td>
+                {{i.opn}}
+            </td>
+            <input type="hidden" name="opn{{ forloop.counter }}" value="{{i.opn}}">
+            <td>
+                {{i.lc_no}}
+            </td>
+            <td>
+                {{i.des}}
+            </td>
+            <td>
+                {{i.pa}}
+            </td>
+            <td>
+                {{i.at}}
+            </td>
+            <td>{{i.at}}</td>
+            <td>{{i.lot}}</td>
+            <td>
+                {{i.ncp_jbs}}
+            </td>
+            <td>{{i.m5_cd}}</td>
+            <td>{{i.updt_dt}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td><td></td><td></td>
+            <td style="text-align: right"><b>TOTAL TIME(Hrs/Min):</b></td>
+            <td><b>{{pttl}}</b></td><td><b>{{attl}}</b></td><td><b>{{attl}}(p/pc)</b></td>
+        </tr>
+    </table>
+
+<br><br>
+
+
+
+</div>
+
+<br>
+<br><br><br>
+
+
+<br>
+
+
+
+</div></table>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+
+{% endblock content %}
